@@ -4,17 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My LEGO Organizer</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Tailwind CSS for Styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- SQL.js for Local DB Simulation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.js"></script>
+
+  <!-- QR Code Scanner -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
 </head>
-<body>
-  <header>
-    <h1>🧱 My LEGO Organizer</h1>
+<body class="bg-gray-100 min-h-screen p-6">
+  <header class="text-center mb-4">
+    <h1 class="text-3xl font-bold">🧱 My LEGO Organizer</h1>
   </header>
 
-  <main id="drawer-container">
-    <!-- Drawers will be loaded here by JS -->
+  <!-- Buttons for Adding Items -->
+  <div class="flex justify-center gap-4 mb-4">
+    <button class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl shadow-md hover:bg-blue-700 transition">
+      Add Drawer
+    </button>
+    <button class="bg-green-600 text-white font-semibold py-2 px-4 rounded-xl shadow-md hover:bg-green-700 transition">
+      Add Box
+    </button>
+    <button class="bg-purple-600 text-white font-semibold py-2 px-4 rounded-xl shadow-md hover:bg-purple-700 transition">
+      Add Piece
+    </button>
+  </div>
+
+  <!-- Scan QR Button -->
+  <div class="text-center">
+    <button onclick="showQrScanner()" class="bg-green-500 text-white font-semibold py-2 px-4 rounded-xl shadow-md hover:bg-green-700 transition">
+      Scan Box QR
+    </button>
+  </div>
+
+  <!-- Main Drawer Container -->
+  <main id="drawer-container" class="mt-6">
+    <!-- Drawers will be dynamically loaded here -->
   </main>
 
-  <script src="script.js"></script>
+  <!-- QR Scanner Modal -->
+  <div id="qrModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-lg p-6 shadow-lg relative">
+      <button id="closeQr" class="absolute top-2 right-2 text-gray-500 hover:text-black">✖</button>
+      <h2 class="text-lg font-bold mb-3">Scan QR Code</h2>
+      <div id="qr-reader" style="width: 300px; height: 300px;"></div>
+    </div>
+  </div>
+
+  <!-- Load JavaScript -->
+  <script type="module" src="script.js"></script>
 </body>
 </html>
