@@ -1,10 +1,12 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
 const supabaseUrl = 'https://uvoppzdiqujbfilnqrce.supabase.co';
-const supabaseKey = 'YOUR_SUPABASE_ANON_KEY'; // Replace this with your real anon key
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV2b3BwemRpcXVqYmZpbG5xcmNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ3NTU4NDgsImV4cCI6MjA2MDMzMTg0OH0.aoU3w5uVS4RBEN_M6XO2ytKJdeZXIOcf5TEyeDGtSJY'; // Replace this with your real anon key
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-document.addEventListener("DOMContentLoaded", () => {
+
+
+document.addEventListener("DOMContentLoaded", function() {
   const drawerContainer = document.getElementById("drawer-container");
   let db;
 
@@ -33,6 +35,60 @@ document.addEventListener("DOMContentLoaded", () => {
     insertStmt.free();
 
     renderDrawersFromDB();
+  const addDrawerButton = document.getElementById("addDrawerButton");
+  const drawerModal = document.getElementById("addDrawerModal");
+  const closeDrawerModal = document.getElementById("closeAddDrawer");
+
+  // Show the modal when the Add Drawer button is clicked
+  addDrawerButton.addEventListener("click", function() {
+    drawerModal.classList.remove("hidden"); // Show the modal
+  });
+
+  // Hide the modal when the close button is clicked
+  closeDrawerModal.addEventListener("click", function() {
+    drawerModal.classList.add("hidden"); // Hide the modal
+  });
+  const addCompartmentButton = document.getElementById("addCompartmentButton");
+  const CompartmentModal = document.getElementById("addCompartmentModal");
+  const closeCompartmentModal = document.getElementById("closeAddCompartment");
+
+  // Show the modal when the Add Box button is clicked
+  addCompartmentButton.addEventListener("click", function() {
+    CompartmentModal.classList.remove("hidden"); // Show the modal
+  });
+
+  // Hide the modal when the close button is clicked
+  closeCompartmentModal.addEventListener("click", function() {
+    CompartmentModal.classList.add("hidden"); // Hide the modal
+  });
+  const addBoxButton = document.getElementById("addBoxButton");
+  const BoxModal = document.getElementById("addBoxModal");
+  const closeBoxModal = document.getElementById("closeAddBox");
+
+  // Show the modal when the Add Box button is clicked
+  addBoxButton.addEventListener("click", function() {
+    BoxModal.classList.remove("hidden"); // Show the modal
+  });
+
+  // Hide the modal when the close button is clicked
+  closeBoxModal.addEventListener("click", function() {
+    BoxModal.classList.add("hidden"); // Hide the modal
+  });
+  const addPieceButton = document.getElementById("addPieceButton");
+  const pieceModal = document.getElementById("addPieceModal");
+  const closePieceModal = document.getElementById("closeAddPiece");
+
+  // Show the modal when the Add Drawer button is clicked
+  addPieceButton.addEventListener("click", function() {
+    pieceModal.classList.remove("hidden"); // Show the modal
+  });
+
+  // Hide the modal when the close button is clicked
+  closePieceModal.addEventListener("click", function() {
+    pieceModal.classList.add("hidden"); // Hide the modal
+  });
+
+
   });
 
   function renderDrawersFromDB() {
